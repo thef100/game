@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://bu7dlc137wqjd"]
+
+[ext_resource type="Texture2D" uid="uid://drww1qvjnsaui" path="res://hitler.png" id="1_cn1i3"]
+[ext_resource type="Script" uid="uid://crgbr2kke77n1" path="res://hitler.gd" id="1_n0cd2"]
+[ext_resource type="Texture2D" uid="uid://cfgmfepi24e6y" path="res://New Piskel.png" id="3_08i3s"]
+[ext_resource type="Script" uid="uid://bydypeavu6qpk" path="res://МашинаСостояний.gd" id="4_c3tf8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn1i3"]
+size = Vector2(123.141, 290.466)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0cd2"]
+radius = 35.3553
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_08i3s"]
+radius = 144.779
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 5
+script = ExtResource("1_n0cd2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10.4375, 10.4375)
+texture = ExtResource("1_cn1i3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 5.95343)
+scale = Vector2(1.14503, 1.0807)
+shape = SubResource("RectangleShape2D_cn1i3")
+
+[node name="Damage_collision" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_collision"]
+position = Vector2(-111, -46)
+shape = SubResource("CircleShape2D_n0cd2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Damage_collision"]
+position = Vector2(101, -8)
+shape = SubResource("CircleShape2D_n0cd2")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_08i3s")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="рывок" type="Timer" parent="."]
+autostart = true
+
+[node name="свастон" type="Timer" parent="."]
+autostart = true
+
+[node name="dash" type="Sprite2D" parent="."]
+scale = Vector2(6.52276, 6.52276)
+texture = ExtResource("3_08i3s")
+
+[node name="МашинаСостояний" type="Node" parent="."]
+script = ExtResource("4_c3tf8")
+
+[connection signal="body_shape_entered" from="Damage_collision" to="." method="_ай_блять"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="рывок" to="." method="_рывок"]
+[connection signal="timeout" from="свастон" to="." method="_свастон"]

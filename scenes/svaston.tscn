@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3fjmoxxkphf6"]
+
+[ext_resource type="Script" uid="uid://b0tp53vb8okj0" path="res://script/svaston.gd" id="1_2ndmn"]
+[ext_resource type="Texture2D" uid="uid://byt0mhdo5ix5q" path="res://graphics/sprites/svaston.png" id="2_occk3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
+size = Vector2(115, 58)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdw60"]
+radius = 256.059
+
+[node name="svaston" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_2ndmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(14.25, 14.25)
+texture = ExtResource("2_occk3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_v8qja")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("CircleShape2D_jdw60")

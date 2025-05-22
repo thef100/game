@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjkmc37lmhbl8"]
+
+[ext_resource type="Script" uid="uid://b86tt201p3jn3" path="res://script/player.gd" id="1_hqtel"]
+[ext_resource type="PackedScene" uid="uid://by865qkugqkgu" path="res://scenes/bullet.tscn" id="2_sweqy"]
+[ext_resource type="Texture2D" uid="uid://dx6y5jy3b4ubf" path="res://graphics/sprites/player.png" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://coou5slnbg558" path="res://graphics/sprites/gun.png" id="4_1jxqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcp4y"]
+size = Vector2(173, 222)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mgyi0"]
+radius = 13.0
+height = 106.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mgyi0"]
+radius = 180.1
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_hqtel")
+"спид" = 600
+"пуля" = ExtResource("2_sweqy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10.6563, 10.6563)
+texture = ExtResource("3_2hs0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -3)
+shape = SubResource("RectangleShape2D_lcp4y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(225, 0)
+scale = Vector2(8, 8)
+texture = ExtResource("4_1jxqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(221, -11)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_mgyi0")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_mgyi0")
+
+[node name="Рывок" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Рывок" to="." method="_рывок_готов"]

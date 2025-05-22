@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx0r24d571lb0"]
+
+[ext_resource type="Script" uid="uid://crgbr2kke77n1" path="res://script/hitler.gd" id="1_ij6vw"]
+[ext_resource type="Texture2D" uid="uid://drww1qvjnsaui" path="res://graphics/sprites/hitler.png" id="2_ghijl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn1i3"]
+size = Vector2(148, 294)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0cd2"]
+radius = 35.3553
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_08i3s"]
+radius = 594.808
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_ij6vw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10.4375, 10.4375)
+texture = ExtResource("2_ghijl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11, 20)
+shape = SubResource("RectangleShape2D_cn1i3")
+
+[node name="Damage_collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_collision"]
+position = Vector2(-111, -46)
+shape = SubResource("CircleShape2D_n0cd2")
+
+[node name="Damage_collision2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_collision2"]
+position = Vector2(100, -4)
+shape = SubResource("CircleShape2D_n0cd2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_08i3s")
