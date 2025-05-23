@@ -8,6 +8,7 @@ var state = "пиздюли"
 var random = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	$ProgressBar.max_value = хп
 	print("Слава Гитлеру!!!!!!!")
 	$"рывок".wait_time = randi() % (10 - 1 + 1) + 1
 	$"свастон".wait_time = randi() % (5 - 1 + 1) + 1
@@ -15,6 +16,8 @@ func _ready() -> void:
 	$dash.visible = false
 
 func _process(delta: float) -> void:
+	print(хп)
+	$ProgressBar.value = хп
 	if state == "пиздюли":
 		$dash.look_at(еврей.position)
 		position += $dash.transform.x * 100 * delta
@@ -28,10 +31,11 @@ func _process(delta: float) -> void:
 
 
 func _ай_блять(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	print("попал")
 	self.modulate = Color.RED
 	if бессмертие != true:
 		$Timer.start()
-		хп -= 1
+		хп -= body.damage
 		бессмертие = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

@@ -1,4 +1,6 @@
 extends RigidBody2D
+var damage = 1
+
 
 func _ready() -> void:
 	look_at(get_viewport().get_camera_2d().get_global_mouse_position())

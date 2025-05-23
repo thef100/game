@@ -1,0 +1,105 @@
+[gd_scene load_steps=15 format=3 uid="uid://cvvl0qxln32vo"]
+
+[ext_resource type="Script" uid="uid://c0xher6m52c1t" path="res://magic/scripts/meteor.gd" id="1_dg8jw"]
+[ext_resource type="Texture2D" uid="uid://b58v6l1yk840w" path="res://graphics/animations/Meteor.png" id="2_h2bbk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_76a1q"]
+radius = 72.8069
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh7qe"]
+atlas = ExtResource("2_h2bbk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa5ls"]
+atlas = ExtResource("2_h2bbk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6js8s"]
+atlas = ExtResource("2_h2bbk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxe7t"]
+atlas = ExtResource("2_h2bbk")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc1lx"]
+atlas = ExtResource("2_h2bbk")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1lrb"]
+atlas = ExtResource("2_h2bbk")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfelb"]
+atlas = ExtResource("2_h2bbk")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iftyy"]
+atlas = ExtResource("2_h2bbk")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ivlrd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh7qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa5ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6js8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxe7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc1lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1lrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfelb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iftyy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_dg8jw"]
+script/source = "extends RigidBody2D
+
+var damage = 20
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dg8jw"]
+radius = 75.8445
+
+[node name="Meteor" type="Area2D"]
+scale = Vector2(75.378, 75.378)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_dg8jw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 0
+shape = SubResource("CircleShape2D_76a1q")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ivlrd")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = SubResource("GDScript_dg8jw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+light_mask = 2
+visibility_layer = 2
+shape = SubResource("CircleShape2D_dg8jw")

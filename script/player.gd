@@ -8,6 +8,8 @@ var предыдущие_состояние = "движение"
 var dash_frames = 0
 var рывок_готов = true
 var стамина = 100
+var заряжен = true
+@export var Первый_слот: PackedScene
 
 func _process(delta: float) -> void:
 	стамина += 0.1
@@ -22,8 +24,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and рывок_готов and стамина > 19:
 		стамина -= 20
 		dash()
-	if Input.is_action_just_released("shoot"):
+	if Input.is_action_just_released("shoot") and заряжен:
+		заряжен = false
+		$Timer.start()
 		выстрел()
+	if Input.is_action_just_released("1_слот"):
+		first_slot()
 	if хп < 1:
 		get_tree().quit()
 	move_and_slide()
@@ -51,6 +57,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	await get_tree().create_timer(1.0).timeout
 	self.modulate = Color(1, 1, 1)
 
+func first_slot():
+	if Первый_слот != null:
+		var мэджик_один = Первый_слот.instantiate()
+		if стамина > мэджик_один.стамина:
+			стамина -= мэджик_один.стамина
+			owner.add_child(мэджик_один)
 
 func _рывок_готов() -> void:
 	рывок_готов = true
+
+
+func _on_timer_timeout() -> void:
+	заряжен = true
