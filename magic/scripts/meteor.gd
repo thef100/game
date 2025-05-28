@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 var damage = 20
 var стамина = 20
 
@@ -9,8 +9,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if $AnimatedSprite2D.frame == 5:
-		$RigidBody2D/CollisionShape2D.Radius
+		$CollisionShape2D.disabled = false
 	else:
-		pass
+		$CollisionShape2D.disabled = true
 	if $AnimatedSprite2D.frame == 7:
 		queue_free()

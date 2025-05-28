@@ -86,6 +86,13 @@ shoot={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="препятсвия"
+2d_physics/layer_2="урон по боссам"
+2d_physics/layer_3="урон по игроку"
+2d_physics/layer_4="баффы для игрока"
+
 [physics]
 
 2d/default_gravity=0.0

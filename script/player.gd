@@ -3,16 +3,16 @@ var direction = Vector2.ZERO
 var хп = 1
 @export var спид: int
 @export var пуля: PackedScene
+@onready var inv: Inv = preload("res://magic/resources/inv.tres")
 var состояние = "движение"
 var предыдущие_состояние = "движение"
 var dash_frames = 0
 var рывок_готов = true
 var стамина = 100
 var заряжен = true
-@export var Первый_слот: PackedScene
 
 func _process(delta: float) -> void:
-	стамина += 0.1
+	стамина += 1
 	if состояние == "движение":
 		move()
 	if состояние == "рывок":
@@ -58,8 +58,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	self.modulate = Color(1, 1, 1)
 
 func first_slot():
-	if Первый_слот != null:
-		var мэджик_один = Первый_слот.instantiate()
+	if inv.Items[0] != null:
+		var мэджик_один = inv.Items[0].scene.instantiate()
 		if стамина > мэджик_один.стамина:
 			стамина -= мэджик_один.стамина
 			owner.add_child(мэджик_один)

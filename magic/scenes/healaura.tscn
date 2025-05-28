@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b32u51os3hq20"]
+
+[ext_resource type="Script" uid="uid://dy4xkmxj4gqfk" path="res://magic/scripts/healaura.gd" id="1_e6u4g"]
+[ext_resource type="Texture2D" uid="uid://cp1qbgujr42q4" path="res://graphics/areas/heal.png" id="1_gmy57"]
+[ext_resource type="Texture2D" uid="uid://dq6ykjlebqrj6" path="res://graphics/particles/heal.png" id="2_nffnf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nffnf"]
+radius = 33.541
+
+[sub_resource type="Curve" id="Curve_e6u4g"]
+_data = [Vector2(0, 0.977528), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Healaura" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_e6u4g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gmy57")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nffnf")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture = ExtResource("2_nffnf")
+emission_shape = 1
+emission_sphere_radius = 64.35
+gravity = Vector2(0, 0)
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_e6u4g")
