@@ -92,6 +92,7 @@ shoot={
 2d_physics/layer_2="урон по боссам"
 2d_physics/layer_3="урон по игроку"
 2d_physics/layer_4="баффы для игрока"
+2d_physics/layer_5="зрение"
 
 [physics]
 

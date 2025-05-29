@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://ddv0tymphp0l1"]
+
+[ext_resource type="PackedScene" uid="uid://dft5lls741lae" path="res://magic/scenes/invisible_potion.tscn" id="1_rt08l"]
+[ext_resource type="Script" uid="uid://beuwytrbfcaxu" path="res://magic/resources/sample.gd" id="2_d0fsl"]
+[ext_resource type="Texture2D" uid="uid://h427dpsxwaq3" path="res://graphics/icons/potion of invisibility.png" id="3_r631g"]
+
+[resource]
+script = ExtResource("2_d0fsl")
+name = "invisibility_potion"
+texture = ExtResource("3_r631g")
+id = 4
+scene = ExtResource("1_rt08l")
+metadata/_custom_type_script = "uid://beuwytrbfcaxu"

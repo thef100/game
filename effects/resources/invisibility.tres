@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="effect" load_steps=3 format=3 uid="uid://wxsqp3rjpiie"]
+
+[ext_resource type="Script" uid="uid://cudqeuruxb4m4" path="res://effects/scripts/effect.gd" id="1_8l1kd"]
+[ext_resource type="Script" uid="uid://dydeegg0h52t6" path="res://effects/scripts/invisibility.gd" id="2_ii88q"]
+
+[resource]
+script = ExtResource("1_8l1kd")
+"время" = 10.0
+"действие" = ExtResource("2_ii88q")
+"название" = "невидимость"
+metadata/_custom_type_script = "uid://cudqeuruxb4m4"

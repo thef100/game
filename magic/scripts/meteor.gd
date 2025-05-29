@@ -1,6 +1,7 @@
 extends RigidBody2D
 var damage = 20
 var стамина = 20
+var призванн: Node2D
 
 
 func _ready() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b32u51os3hq20"]
+[gd_scene load_steps=11 format=3 uid="uid://b32u51os3hq20"]
 
 [ext_resource type="Script" uid="uid://dy4xkmxj4gqfk" path="res://magic/scripts/healaura.gd" id="1_e6u4g"]
 [ext_resource type="Texture2D" uid="uid://cp1qbgujr42q4" path="res://graphics/areas/heal.png" id="1_gmy57"]
@@ -11,21 +11,173 @@ radius = 33.541
 _data = [Vector2(0, 0.977528), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Animation" id="Animation_e6u4g"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-4.29875, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.15, 0.15), Vector2(10, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dddo7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-4.29875]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_21ty8"]
+resource_name = "despawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [0.0, -4.29875]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(0.15, 0.15)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1iety"]
+_data = {
+&"RESET": SubResource("Animation_dddo7"),
+&"despawn": SubResource("Animation_21ty8"),
+&"spawn": SubResource("Animation_e6u4g")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e6u4g"]
+radius = 331.436
+
 [node name="Healaura" type="RigidBody2D"]
-collision_layer = 8
+z_index = -1
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_e6u4g")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_gmy57")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nffnf")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(10, 10)
+amount = 16
 texture = ExtResource("2_nffnf")
-emission_shape = 1
+lifetime = 2.92
+emission_shape = 2
 emission_sphere_radius = 64.35
 gravity = Vector2(0, 0)
-scale_amount_min = 0.5
+scale_amount_min = 5.0
+scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_e6u4g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1iety")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -4.29875
+texture = ExtResource("1_gmy57")
+
+[node name="Healarea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Healarea"]
+shape = SubResource("CircleShape2D_e6u4g")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="Healarea" to="." method="_on_healarea_body_entered"]
+[connection signal="body_exited" from="Healarea" to="." method="_on_healarea_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dft5lls741lae"]
+
+[ext_resource type="Texture2D" uid="uid://f16h67fxbv0t" path="res://graphics/particles/smoke.png" id="1_b1uph"]
+[ext_resource type="Script" uid="uid://ce0pw7mdc5hbl" path="res://magic/scripts/invisible_potion.gd" id="2_vtj77"]
+
+[sub_resource type="Curve" id="Curve_vtj77"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.534091, 0.640449), -2.3127, -2.3127, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 32
+texture = ExtResource("1_b1uph")
+lifetime = 2.5
+one_shot = true
+explosiveness = 0.6
+direction = Vector2(0, -1)
+spread = 65.0
+gravity = Vector2(0, -100)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_vtj77")
+script = ExtResource("2_vtj77")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

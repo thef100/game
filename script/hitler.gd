@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var смерть = true
+var нашёл = true
 var хп = 200
 var бессмертие = false
 @export var еврей: Node2D
@@ -16,15 +16,20 @@ func _ready() -> void:
 	$dash.visible = false
 
 func _process(delta: float) -> void:
-	print(хп)
+	print(еврей)
+	if еврей != null:
+		if еврей.эффекты.has("невидимость"):
+			еврей = null
+	#print(хп)
 	$ProgressBar.value = хп
-	if state == "пиздюли":
-		$dash.look_at(еврей.position)
-		position += $dash.transform.x * 100 * delta
-	if state == "прерывок":
-		position += $dash.transform.x * 100 * delta
-	if state == "рывок":
-		position += $dash.transform.x * 1500 * delta
+	if еврей != null:
+		if state == "пиздюли":
+			$dash.look_at(еврей.position)
+			position += $dash.transform.x * 100 * delta
+		if state == "прерывок":
+			position += $dash.transform.x * 100 * delta
+		if state == "рывок":
+			position += $dash.transform.x * 1500 * delta
 	if хп < 1:
 		freeze_game_for_seconds(1488)
 
@@ -39,11 +44,11 @@ func _ай_блять(body_rid: RID, body: Node2D, body_shape_index: int, local_
 		бессмертие = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	смерть = true
+	еврей = body
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	смерть = false
+	pass
 
 
 
