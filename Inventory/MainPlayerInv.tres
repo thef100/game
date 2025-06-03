@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MI" load_steps=4 format=3 uid="uid://t6rjbtlbdpxd"]
+
+[ext_resource type="Script" uid="uid://d241j62lh5iw8" path="res://Inventory/MainInvItem.gd" id="1_gnpl6"]
+[ext_resource type="Resource" uid="uid://d2mk1a44om6ej" path="res://Inventory/MainItems/StarterGun.tres" id="2_mesuf"]
+[ext_resource type="Script" uid="uid://dmugisi6yrtom" path="res://Inventory/MainInventory.gd" id="3_cu6xn"]
+
+[resource]
+script = ExtResource("3_cu6xn")
+MItems = Array[ExtResource("1_gnpl6")]([ExtResource("2_mesuf"), null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://dmugisi6yrtom"

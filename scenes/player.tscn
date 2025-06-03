@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjkmc37lmhbl8"]
+[gd_scene load_steps=15 format=3 uid="uid://cjkmc37lmhbl8"]
 
 [ext_resource type="Script" uid="uid://b86tt201p3jn3" path="res://script/player.gd" id="1_hqtel"]
 [ext_resource type="PackedScene" uid="uid://by865qkugqkgu" path="res://scenes/bullet.tscn" id="2_sweqy"]
 [ext_resource type="Texture2D" uid="uid://dx6y5jy3b4ubf" path="res://graphics/sprites/player.png" id="3_2hs0m"]
+[ext_resource type="Resource" uid="uid://t6rjbtlbdpxd" path="res://Inventory/MainPlayerInv.tres" id="3_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://coou5slnbg558" path="res://graphics/sprites/gun.png" id="4_1jxqw"]
 [ext_resource type="Script" uid="uid://cwe8kycgatvi" path="res://scenes/control.gd" id="6_smehm"]
 [ext_resource type="Texture2D" uid="uid://beivysauj4dl7" path="res://graphics/colors/red.png" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://52kpqw07u1ay" path="res://scenes/inventory.gd" id="7_fjrip"]
 [ext_resource type="PackedScene" uid="uid://bux1hrwahjg73" path="res://scenes/slot.tscn" id="7_smehm"]
+[ext_resource type="PackedScene" uid="uid://cpn3dfvvltk10" path="res://Inventory/MainInvUI.tscn" id="10_d2wvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcp4y"]
 size = Vector2(173, 222)
@@ -29,6 +31,7 @@ collision_mask = 9
 script = ExtResource("1_hqtel")
 "спид" = 1000
 "пуля" = ExtResource("2_sweqy")
+MainInv = ExtResource("3_y4r1p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(10.6563, 10.6563)
@@ -135,6 +138,12 @@ show_percentage = false
 
 [node name="inventory" type="Node" parent="."]
 script = ExtResource("7_fjrip")
+
+[node name="Control" parent="." instance=ExtResource("10_d2wvv")]
+offset_left = -2082.0
+offset_top = -2657.0
+offset_right = 2104.0
+offset_bottom = -341.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Рывок" to="." method="_рывок_готов"]

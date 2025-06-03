@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MII" load_steps=3 format=3 uid="uid://d2mk1a44om6ej"]
+
+[ext_resource type="Script" uid="uid://d241j62lh5iw8" path="res://Inventory/MainInvItem.gd" id="1_2ojvo"]
+[ext_resource type="Texture2D" uid="uid://bswheo2r7r3sk" path="res://graphics/sprites/InvStarterGun.png" id="2_2ojvo"]
+
+[resource]
+script = ExtResource("1_2ojvo")
+name = "StarterGun"
+texture = ExtResource("2_2ojvo")
+metadata/_custom_type_script = "uid://d241j62lh5iw8"

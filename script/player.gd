@@ -12,7 +12,7 @@ var рывок_готов = true
 var стамина = 100
 var заряжен = true
 var эффекты = []
-
+@export var MainInv: MI
 
 func _ready() -> void:
 	$CanvasLayer/Control/ProgressBar.max_value = макс_хп

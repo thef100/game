@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://f3k6e2igcfbh"]
+
+[ext_resource type="Texture2D" uid="uid://ch4t24m3s1dnq" path="res://graphics/sprites/MainInvSlot.png" id="1_hwm4n"]
+[ext_resource type="Script" uid="uid://bvigo2t2ntx7h" path="res://Inventory/main_inv_slot.gd" id="1_narg6"]
+
+[sub_resource type="GDScript" id="GDScript_h3aka"]
+script/source = "extends Sprite2D
+"
+
+[node name="Panel" type="Panel"]
+offset_right = 148.0
+offset_bottom = 148.0
+script = ExtResource("1_narg6")
+
+[node name="SlotTexture" type="Sprite2D" parent="."]
+position = Vector2(72.8774, 70.8774)
+scale = Vector2(0.144771, 0.144771)
+texture = ExtResource("1_hwm4n")
+
+[node name="ItemTexture" type="Sprite2D" parent="."]
+position = Vector2(72.8774, 70.8774)
+scale = Vector2(0.144771, 0.144771)
+script = SubResource("GDScript_h3aka")
