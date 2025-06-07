@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqubm8adx7x6x"]
+
+[ext_resource type="Script" uid="uid://cn32jhtb1jg1j" path="res://test/inv.gd" id="1_pxvhn"]
+[ext_resource type="Texture2D" uid="uid://cb0073kyhst8y" path="res://graphics/icons/meteor.png" id="2_rfxcw"]
+[ext_resource type="Texture2D" uid="uid://h427dpsxwaq3" path="res://graphics/icons/potion of invisibility.png" id="3_57r2p"]
+
+[node name="inventar_yopta" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pxvhn")
+
+[node name="ItemList" type="ItemList" parent="."]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.5
+offset_top = -157.0
+offset_right = 217.5
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 2
+max_columns = 4
+icon_mode = 0
+item_0/text = "пенис"
+item_0/icon = ExtResource("2_rfxcw")
+item_1/text = "анальная пробка"
+item_1/icon = ExtResource("3_57r2p")

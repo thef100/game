@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://bjhc0o2qgokmn"]
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://br75cbdtg82p7"]
 
 [ext_resource type="PackedScene" uid="uid://b32u51os3hq20" path="res://magic/scenes/healaura.tscn" id="1_brtvl"]
 [ext_resource type="Script" uid="uid://beuwytrbfcaxu" path="res://magic/resources/sample.gd" id="2_0ms8h"]
