@@ -7,7 +7,9 @@ func _ready() -> void:
 	global_position.y += 1
 	призванн.add_effect("res://effects/resources/invisibility.tres", 10)
 	emitting = true
-
+func _process(delta: float) -> void:
+	if Input.is_action_just_released("e"):
+		emitting = false
 
 
 
