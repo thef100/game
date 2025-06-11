@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://beivysauj4dl7" path="res://graphics/colors/red.png" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://52kpqw07u1ay" path="res://scenes/inventory.gd" id="7_fjrip"]
 [ext_resource type="PackedScene" uid="uid://bux1hrwahjg73" path="res://scenes/slot.tscn" id="7_smehm"]
-[ext_resource type="PackedScene" uid="uid://dqubm8adx7x6x" path="res://test/inv.tscn" id="8_ur7pv"]
+[ext_resource type="PackedScene" uid="uid://dqubm8adx7x6x" path="res://ui/inv.tscn" id="8_ur7pv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcp4y"]
 size = Vector2(173, 222)
